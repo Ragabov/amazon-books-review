@@ -15,8 +15,6 @@ The `classify` endpoint requires a single argument `utterance` that contains the
 `SERVICE_URL/classify?utterance=I loved it`
 
 ### Response
-
-**For Valid Requests**
 A request to the method `classify` returns a json object that contains the predicted class as in the example below : 
 ```
 {
@@ -28,7 +26,6 @@ The `detected_class` key can take one of three values : {`negative`, `neutral`, 
 
 ## Experiments Results
 Below are the results of the top scoring classifiers and their tuned hyper parameters values
-
 | # model | # hyper-parameters | accuracy   | macro F1 | Micro F1  
 | ------------------ | ------------------ | ------- | ------------------ | ------------------ 
 | MultiNomial Naive Bayes | alpha: 0.2 - Uniform Prior | 85% | 0.69 | .87  
@@ -40,10 +37,19 @@ Below are the results of the top scoring classifiers and their tuned hyper param
 ## Usage
 
 
-### Requirements
+###Requirements
 * Python 3.X with pip + installing the dependencies in the `requirements.txt` file
 
-### Running Flask Service
+#### Training the traditional ML models
+* Run the `explotary_notebook` residing in the `explotary_analysis` directory
+
+#### Training the Bi-GRU 
+* Download a gensim compatible word2vec/glove embeddings 
+* Build the data by running `python build_data_files.py` with the appropriate arguments
+* Train the model by running `python training.py` with the appropriate arguments
+* Test the model by running `python testing.py` with the appropriate arguments
+
+#### Running Flask Classification Service
 To run the flask service using a trained model : 
 * Run `python sentiment.py` with the appropriate arguments
 
