@@ -38,7 +38,7 @@ Below are the results of the top scoring classifiers and their tuned hyper param
 ## Usage
 
 
-###Requirements
+### Requirements
 * Python 3.X with pip + installing the dependencies in the `requirements.txt` file
 
 #### Training the traditional ML models
