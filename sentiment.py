@@ -9,7 +9,7 @@ INT_TO_STR_CLASSES_MAP = {0: "negative",    1: "neutral", 2: "positive"}
 
 
 @app.route("/classify", methods=['GET', 'POST', ])
-def hello():
+def classify():
     utterance = request.args['utterance']
     predicted_class = sentiment_interface.run(utterance)
     return jsonify(
