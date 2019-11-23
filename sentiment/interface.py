@@ -1,5 +1,6 @@
 import numpy as np
-from sklearn.externals import joblib
+import joblib
+
 from sentiment.input_utils import normalize, trim_from_middle, get_ids, stem
 from sentiment.model import SentModel
 
