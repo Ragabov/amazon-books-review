@@ -34,7 +34,7 @@ class SentModelInterface(GenericModelInterface):
         return np.argmax(probs)
 
 
-class VotingEnsembleInterface:
+class VotingEnsembleInterface(GenericModelInterface):
     def __init__(self, classifier_file, preprocessing_pipeline_file):
         self.model = pickle.loads(classifier_file)
         self.preprocesing_pipeline = pickle.loads(preprocessing_pipeline_file)
