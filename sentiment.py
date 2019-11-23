@@ -29,7 +29,8 @@ if __name__ == "__main__":
                         help="The path to the pickled model file")
     parser_traditional.add_argument('preprocessing_file', type=str,
                         help="The path to the pickled preprocessing pipeline file")
-
+    parser_traditional.add_argument('--max_seq_len', type=int, default=-1,
+                           help='The maximum number of tokens per sample text after trimming')
     parser_dl = subparsers.add_parser('dl', help='Run a DL classifier')
     parser_dl.add_argument('embeddings_file', type=str,
                         help="gensim compatible word2vec format file that contains the pre-trained embeddings")
@@ -44,7 +45,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.model_type == "traditional":
-        sentiment_interface = VotingEnsembleInterface(args.model_file, args.preprocessing_file)
+        sentiment_interface = VotingEnsembleInterface(args.model_file, args.preprocessing_file, args.max_seq_len)
     elif args.model_type == "dl":
         gensim_model = gensim.models.KeyedVectors.load_word2vec_format(args.embeddings_file)
         sentiment_interface = SentModelInterface(gensim_model, args.max_seq_len,

@@ -1,7 +1,6 @@
 import numpy as np
-import pickle
-
-from sentiment.input_utils import normalize, trim_from_middle, get_ids
+from sklearn.externals import joblib
+from sentiment.input_utils import normalize, trim_from_middle, get_ids, stem
 from sentiment.model import SentModel
 
 
@@ -35,10 +34,14 @@ class SentModelInterface(GenericModelInterface):
 
 
 class VotingEnsembleInterface(GenericModelInterface):
-    def __init__(self, classifier_file, preprocessing_pipeline_file):
-        self.model = pickle.loads(classifier_file)
-        self.preprocesing_pipeline = pickle.loads(preprocessing_pipeline_file)
+    def __init__(self, classifier_file, preprocessing_pipeline_file, max_seq_len):
+        self.model = joblib.load(classifier_file)
+        self.preprocesing_pipeline = joblib.load(preprocessing_pipeline_file)
+        self.max_seq_len = max_seq_len if max_seq_len > 0 else None
 
     def run(self, utterance):
-        inputs = self.preprocesing_pipeline.transform(utterance)
-        return self.model.predict(inputs)
+        stemmed_normalized_utterance = stem(normalize(utterance))
+        if self.max_seq_len is not None:
+            stemmed_normalized_utterance = trim_from_middle(stemmed_normalized_utterance, self.max_seq_len)
+        inputs = self.preprocesing_pipeline.transform([stemmed_normalized_utterance])
+        return self.model.predict(inputs)[0]
