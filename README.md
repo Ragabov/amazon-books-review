@@ -1,7 +1,6 @@
 # Amazon Book Reviews 3-class sentiment classifier
 #### Note
-This repository contains all the needed code to train/test/run a simple flask review classification service, but all the trained models and data files are not included. 
-
+This repository contains all the needed code to train/test/run a simple flask review classification service, but all the trained models and data files are not included. Check the explotary notebook for the details on the data wrangling/analysis and the training of the traditional classification models reported below.
 ### Introduction
 This repository contains the code for replicating results described below and can be used to run a simple flask service delivering one of two classification models (Traditional Voting Ensemble or a Deep Learning Bi-GRU model)
 
