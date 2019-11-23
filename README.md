@@ -26,6 +26,7 @@ The `detected_class` key can take one of three values : {`negative`, `neutral`, 
 
 ## Experiments Results
 Below are the results of the top scoring classifiers and their tuned hyper parameters values
+
 | # model | # hyper-parameters | accuracy   | macro F1 | Micro F1  
 | ------------------ | ------------------ | ------- | ------------------ | ------------------ 
 | MultiNomial Naive Bayes | alpha: 0.2 - Uniform Prior | 85% | 0.69 | .87  
