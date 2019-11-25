@@ -125,7 +125,7 @@ if __name__ == '__main__':
     df = pd.read_json(args.data_json, lines=True)
 
     logging.info("Splitting the data into training, validation, testing")
-    df_train, df_test = train_test_split(df, test_size=.2, stratify=df["overall"],
+    df_train, df_test = train_test_split(df, test_size=.3, stratify=df["overall"],
                                          random_state=12)
     df_train, df_valid = train_test_split(df_train, test_size=.125, stratify=df_train["overall"],
                                           random_state=12)
