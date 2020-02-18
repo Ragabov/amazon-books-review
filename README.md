@@ -32,7 +32,7 @@ Below are the results of the top scoring classifiers and their tuned hyper param
 | MultiNomial Naive Bayes | alpha: 0.2 - Uniform Prior | 85% | 0.69 | .87  
 | Logistic Regression | L1 Regularization - balancing class weights - C: 1 - one-vs-rest | 89%| .73 | .90
 | Linear Kernel Support Vector | L2 Regularization -balancing class weights - C: .2 - one-vs-rest | 90% |.73 | .90 
-| Soft Voting Ensemble (MNB + LR + Calibrated Linear SV) | 100 | 90% | .74 | .90 
+| Soft Voting Ensemble (MNB + LR + Calibrated Linear SV) | same hyper-params for each consituting classifier as mentioned above | 90% | .74 | .90 
 | Bi-LSTM GRU + Twitter-Glove-200d embeddings | hidden-size of GRU cells : 100 -  learning-rate: .001 - Early Stopping| 86% | .70 | .87
 
 ## Usage
